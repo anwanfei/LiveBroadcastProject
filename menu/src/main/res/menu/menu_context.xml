@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/item1"
+        android:icon="@android:drawable/ic_delete"
+        android:title="增加" />
+    <item
+        android:id="@+id/item2"
+        android:icon="@android:drawable/ic_menu_share"
+        android:title="删除" />
+    <item
+        android:id="@+id/item3"
+        android:icon="@android:drawable/ic_menu_view"
+        android:title="修改" />
+</menu>

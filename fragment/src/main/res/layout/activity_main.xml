@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <fragment
+        android:id="@+id/fragmnet_b"
+        android:name="com.anfly.fragment.BFragment"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+
+    <fragment
+        android:id="@+id/framgnet_a"
+        android:name="com.anfly.fragment.AFragment"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+
+    <FrameLayout
+        android:id="@+id/fl_container"
+        android:layout_width="match_parent"
+        android:layout_height="60dp" />
+
+    <Button
+        android:id="@+id/btn_add"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="添加" />
+
+    <Button
+        android:id="@+id/btn_remove"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="移除" />
+
+    <Button
+        android:id="@+id/btn_repalce"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="替换" />
+
+    <Button
+        android:id="@+id/btn_hide"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="隐藏" />
+
+    <Button
+        android:id="@+id/btn_show"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="显示" />
+
+    <Button
+        android:id="@+id/btn_msg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="跳转到导航菜单页面" />
+</LinearLayout>
