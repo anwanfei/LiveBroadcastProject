@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:cardCornerRadius="3dp"
+    app:cardElevation="5dp"
+    app:cardPreventCornerOverlap="false"
+    app:cardUseCompatPadding="true"
+    app:contentPadding="12dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_share_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@mipmap/ic_logo"
+            android:drawablePadding="3dp"
+            android:gravity="center_vertical"
+            android:text="城乡"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:id="@+id/tv_super_chapter_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="自助"
+            android:textColor="#2196F3"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_share_user"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="10dp"
+            android:text="android"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/iv_like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_title"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/ic_like" />
+
+        <TextView
+            android:id="@+id/tv_share_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_title"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="16dp"
+            android:layout_toRightOf="@id/iv_like"
+            android:drawableLeft="@mipmap/ic_time"
+            android:drawablePadding="6dp"
+            android:text="1天前" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_title"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="16dp"
+            android:text="新"
+            android:textColor="#4CAF50"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>
