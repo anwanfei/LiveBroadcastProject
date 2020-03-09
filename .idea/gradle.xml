@@ -1,13 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
-        <compositeConfiguration>
-          <compositeBuild compositeDefinitionSource="SCRIPT" />
-        </compositeConfiguration>
+        <option name="testRunner" value="PLATFORM" />
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/banner" />
+            <option value="$PROJECT_DIR$/contentprovider" />
+            <option value="$PROJECT_DIR$/contentresolver" />
+            <option value="$PROJECT_DIR$/exam8" />
+            <option value="$PROJECT_DIR$/exercise" />
+            <option value="$PROJECT_DIR$/expandablelistview" />
+            <option value="$PROJECT_DIR$/fragment" />
+            <option value="$PROJECT_DIR$/listview" />
+            <option value="$PROJECT_DIR$/menu" />
+            <option value="$PROJECT_DIR$/notification" />
+            <option value="$PROJECT_DIR$/permission" />
+            <option value="$PROJECT_DIR$/popupwindow" />
+            <option value="$PROJECT_DIR$/radomname" />
+            <option value="$PROJECT_DIR$/recyclerview" />
+            <option value="$PROJECT_DIR$/smartgirl" />
+            <option value="$PROJECT_DIR$/tablayout" />
+            <option value="$PROJECT_DIR$/tablayoutframgment" />
+            <option value="$PROJECT_DIR$/viewpager" />
+            <option value="$PROJECT_DIR$/viewpagerfragment" />
+            <option value="$PROJECT_DIR$/wanandroid" />
+          </set>
+        </option>
         <option name="resolveModulePerSourceSet" value="false" />
       </GradleProjectSettings>
     </option>

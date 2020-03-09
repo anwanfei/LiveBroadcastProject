@@ -13,6 +13,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+import com.github.dfqin.grantor.PermissionListener;
+import com.github.dfqin.grantor.PermissionsUtil;
+
 /**
  * 动态获取危险权限总结
  * 1.在清单列表声明权限
@@ -26,6 +29,7 @@ import androidx.core.app.ActivityCompat;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button btn_permisstion;
+    private Button btn_grantor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +42,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_permisstion = (Button) findViewById(R.id.btn_permisstion);
 
         btn_permisstion.setOnClickListener(this);
+        btn_grantor = (Button) findViewById(R.id.btn_grantor);
+        btn_grantor.setOnClickListener(this);
     }
 
     @Override
@@ -46,7 +52,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn_permisstion:
                 requestPermission();
                 break;
+            case R.id.btn_grantor:
+                grantor();
+                break;
         }
+    }
+
+    private void grantor() {
+        PermissionsUtil.requestPermission(this, new PermissionListener() {
+            @Override
+            public void permissionGranted(@NonNull String[] permission) {
+                callPhone();
+            }
+
+            @Override
+            public void permissionDenied(@NonNull String[] permission) {
+                Toast.makeText(MainActivity.this, "获取权限失败", Toast.LENGTH_SHORT).show();
+            }
+        }, Manifest.permission.CALL_PHONE);
     }
 
     private void requestPermission() {
