@@ -1,3 +1,5 @@
 include ':app', ':expandablelistview', ':listview', ':menu', ':exercise', ':recyclerview', ':smartgirl', ':fragment', ':viewpager', ':banner', ':viewpagerfragment', ':tablayout', ':tablayoutframgment', ':popupwindow', ':radomname', ':notification', ':exam8', ':wanandroid', ':permission'
 include ':contentprovider'
 include ':contentresolver'
+include ':service'
+include ':mediaplayer'

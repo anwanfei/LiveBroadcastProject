@@ -1,10 +1,15 @@
 package com.anfly.contentresolver;
 
+import android.Manifest;
 import android.content.ContentResolver;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
+import android.provider.MediaStore;
+import android.provider.Telephony;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -12,7 +17,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.github.dfqin.grantor.PermissionListener;
+import com.github.dfqin.grantor.PermissionsUtil;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -24,12 +37,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EditText et_name;
     private ContentResolver contentResolver;
     private Uri uri;
+    private Button btn_contacts;
+    private Button btn_sms;
+    private Button btn_photo;
+    private Button btn_audio;
+    private Button btn_vedio;
+    private RecyclerView rv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        initPermission();
         initView();
+
+    }
+
+    private void initPermission() {
+        PermissionsUtil.requestPermission(this, new PermissionListener() {
+            @Override
+            public void permissionGranted(@NonNull String[] permission) {
+
+            }
+
+            @Override
+            public void permissionDenied(@NonNull String[] permission) {
+
+            }
+        }, Manifest.permission.CALL_PHONE, Manifest.permission.READ_CONTACTS, Manifest.permission.READ_SMS, Manifest.permission.READ_EXTERNAL_STORAGE);
     }
 
     private void initView() {
@@ -50,6 +85,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_query.setOnClickListener(this);
 
 
+        btn_contacts = (Button) findViewById(R.id.btn_contacts);
+        btn_contacts.setOnClickListener(this);
+        btn_sms = (Button) findViewById(R.id.btn_sms);
+        btn_sms.setOnClickListener(this);
+        btn_photo = (Button) findViewById(R.id.btn_photo);
+        btn_photo.setOnClickListener(this);
+        btn_audio = (Button) findViewById(R.id.btn_audio);
+        btn_audio.setOnClickListener(this);
+        btn_vedio = (Button) findViewById(R.id.btn_vedio);
+        btn_vedio.setOnClickListener(this);
+        rv = (RecyclerView) findViewById(R.id.rv);
     }
 
     @Override
@@ -67,7 +113,91 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn_query:
                 query();
                 break;
+            case R.id.btn_contacts:
+                getContacts();
+                break;
+            case R.id.btn_sms:
+                sms();
+                break;
+            case R.id.btn_photo:
+                photo();
+                break;
+            case R.id.btn_audio:
+                audio();
+
+                break;
+            case R.id.btn_vedio:
+                video();
+                break;
         }
+    }
+
+    private void video() {
+        Cursor cursor = contentResolver.query(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, null, null, null, null);
+        while (cursor.moveToNext()) {
+            String name = cursor.getString(cursor.getColumnIndex(MediaStore.Video.Media.DISPLAY_NAME));
+            String data = cursor.getString(cursor.getColumnIndex(MediaStore.Video.Media.DATA));
+            Log.e("TAG", name + ":" + data);
+        }
+    }
+
+    private void audio() {
+        Cursor cursor = contentResolver.query(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, null, null, null, null);
+        while (cursor.moveToNext()) {
+            String name = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.DISPLAY_NAME));
+            String data = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.DATA));
+            Log.e("TAG", name + ":" + data.endsWith("mp3"));
+        }
+    }
+
+    private void photo() {
+        Cursor query = contentResolver.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, null, null, null, null);
+        while (query.moveToNext()) {
+            String name = query.getString(query.getColumnIndex(MediaStore.Images.ImageColumns.DISPLAY_NAME));
+            String data = query.getString(query.getColumnIndex(MediaStore.Images.ImageColumns.DATA));
+            Log.e("TAG", name + ":" + data);
+        }
+    }
+
+    private void sms() {
+        Cursor cursor = contentResolver.query(Telephony.Sms.CONTENT_URI, null, null, null, null);
+        while (cursor.moveToNext()) {
+            String num = cursor.getString(cursor.getColumnIndex(Telephony.Sms.ADDRESS));
+            String content = cursor.getString(cursor.getColumnIndex(Telephony.Sms.BODY));
+            String date = cursor.getString(cursor.getColumnIndex(Telephony.Sms.DATE));
+
+            Log.e("TAG", date + "-" + num + "-" + content);
+        }
+    }
+
+    private void getContacts() {
+        final ArrayList<ContactsBean> list = new ArrayList<>();
+
+        Cursor query = contentResolver.query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, null, null, null);
+        while (query.moveToNext()) {
+            String name = query.getString(query.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
+            String num = query.getString(query.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
+
+            Log.e("TAG", "name:" + name.substring(0, 1) + ",num:" + num.substring(0, 2) + "*********");
+            ContactsBean contactsBean = new ContactsBean(name.substring(0, 1), num.substring(0, 2) + "*********");
+            list.add(contactsBean);
+        }
+        rv.setLayoutManager(new LinearLayoutManager(this));
+
+        ContactsAdapter adapter = new ContactsAdapter(this, list);
+        rv.setAdapter(adapter);
+        adapter.setOnItemClickListener(new ContactsAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                callPhone(list.get(position));
+            }
+        });
+    }
+
+    private void callPhone(ContactsBean contactsBean) {
+        Intent intent = new Intent(Intent.ACTION_CALL);
+        intent.setData(Uri.parse("tel:" + contactsBean.getNum()));
+        startActivity(intent);
     }
 
     private void updata() {
@@ -78,6 +208,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void query() {
         Cursor corsor = contentResolver.query(uri, null, null, null, null);
+        ArrayList<String> list = new ArrayList<>();
         while (corsor.moveToNext()) {
             String name = corsor.getString(corsor.getColumnIndex("name"));
             String age = corsor.getString(corsor.getColumnIndex("age"));
