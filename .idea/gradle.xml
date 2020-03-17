@@ -33,6 +33,7 @@
             <option value="$PROJECT_DIR$/viewpager" />
             <option value="$PROJECT_DIR$/viewpagerfragment" />
             <option value="$PROJECT_DIR$/wanandroid" />
+            <option value="$PROJECT_DIR$/wanproject" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

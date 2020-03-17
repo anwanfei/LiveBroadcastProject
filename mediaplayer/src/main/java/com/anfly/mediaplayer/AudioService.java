@@ -14,9 +14,9 @@ import java.io.IOException;
 public class AudioService extends Service {
 
     private MediaPlayer mp;
-    AudioBider audioBider = new AudioBider();
+    AudioBinder audioBider = new AudioBinder();
 
-    class AudioBider extends Binder {
+    class AudioBinder extends Binder {
         public AudioService getServie() {
             return AudioService.this;
         }

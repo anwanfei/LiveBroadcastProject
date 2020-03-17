@@ -72,7 +72,7 @@ public class AudioServiceActivity extends AppCompatActivity implements View.OnCl
 
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
-            AudioService.AudioBider audioBider = (AudioService.AudioBider) service;
+            AudioService.AudioBinder audioBider = (AudioService.AudioBinder) service;
             audioService = audioBider.getServie();
         }
 
