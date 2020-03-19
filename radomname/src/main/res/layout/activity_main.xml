@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:text="开始点名"
         android:textColor="#673AB7"
-        android:textSize="50sp"
+        android:textSize="48sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

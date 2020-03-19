@@ -4,6 +4,8 @@ package com.anfly.wanandroid;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -70,6 +72,15 @@ public class HomeFragment extends Fragment implements OnRefreshLoadMoreListener,
                 });
             }
         }).start();
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        //代码添加
+        menu.add(0, 0, 0, "扫一扫");
+        menu.add(0, 1, 0, "收付款");
+        menu.add(0, 2, 0, "摇一摇");
+        super.onCreateOptionsMenu(menu, inflater);
     }
 
     private String getResponse(String netUrl) {
