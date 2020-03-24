@@ -19,6 +19,7 @@
             <option value="$PROJECT_DIR$/expandablelistview" />
             <option value="$PROJECT_DIR$/expandablelistview/expandablelistviewr" />
             <option value="$PROJECT_DIR$/fragment" />
+            <option value="$PROJECT_DIR$/fragmentr" />
             <option value="$PROJECT_DIR$/listview" />
             <option value="$PROJECT_DIR$/listviewr" />
             <option value="$PROJECT_DIR$/mediaplayer" />
@@ -29,11 +30,13 @@
             <option value="$PROJECT_DIR$/popupwindow" />
             <option value="$PROJECT_DIR$/radomname" />
             <option value="$PROJECT_DIR$/recyclerview" />
+            <option value="$PROJECT_DIR$/recyclerviewr" />
             <option value="$PROJECT_DIR$/service" />
             <option value="$PROJECT_DIR$/smartgirl" />
             <option value="$PROJECT_DIR$/tablayout" />
             <option value="$PROJECT_DIR$/tablayoutframgment" />
             <option value="$PROJECT_DIR$/viewpager" />
+            <option value="$PROJECT_DIR$/viewpager2" />
             <option value="$PROJECT_DIR$/viewpagerfragment" />
             <option value="$PROJECT_DIR$/wanandroid" />
             <option value="$PROJECT_DIR$/wanproject" />

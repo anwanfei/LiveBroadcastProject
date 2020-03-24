@@ -20,18 +20,23 @@
             android:layout_height="wrap_content"
             android:background="@color/colorAccent" />
 
-        <TextView
-            android:id="@+id/tv_open"
-            android:layout_width="wrap_content"
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/vp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="主界面" />
+            android:layout_weight="1" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 
     <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nv_menu"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/nv_menu"
         android:layout_gravity="left"
         app:headerLayout="@layout/header_layout"
         app:menu="@menu/munu_nv" />

@@ -4,8 +4,8 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.google.gson.Gson;
 
@@ -81,9 +81,11 @@ public class MainActivity extends AppCompatActivity implements SmartGirlAdapter.
     private void initView() {
         rv = (RecyclerView) findViewById(R.id.rv);
 
-//        rv.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+        StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+//        staggeredGridLayoutManager.setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_NONE);
+        rv.setLayoutManager(staggeredGridLayoutManager);
 
-        rv.setLayoutManager(new LinearLayoutManager(this));
+//        rv.setLayoutManager(new LinearLayoutManager(this));
         list = new ArrayList<>();
         adapter = new SmartGirlAdapter(this, list);
         rv.setAdapter(adapter);
