@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
             "B16彭张斌",
             "B17纪佳慧",
             "B18李冬瑞",
-            "B19李大山",
+            "B19李大山(无麦)",
             "B20何曦哲",
             "B21李靖保",
             "B22刘恩侠",
