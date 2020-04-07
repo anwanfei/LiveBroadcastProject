@@ -25,6 +25,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.anfly.finalproject.adapter.VpAdapter;
 import com.anfly.finalproject.fragment.CollectionFragment;
 import com.anfly.finalproject.fragment.ElvFragment;
+import com.anfly.finalproject.fragment.ExamSixFragment;
 import com.anfly.finalproject.fragment.HomeFragment;
 import com.anfly.finalproject.fragment.ProjectFragment;
 import com.google.android.material.navigation.NavigationView;
@@ -177,12 +178,14 @@ public class MainActivity extends AppCompatActivity {
         fragments.add(new ElvFragment());
         fragments.add(new CollectionFragment());
         fragments.add(new ProjectFragment());
+        fragments.add(new ExamSixFragment());
 
         ArrayList<String> titles = new ArrayList<>();
         titles.add("首页");
         titles.add("二级");
         titles.add("收藏");
         titles.add("项目");
+        titles.add("题六");
 
         VpAdapter vpAdapter = new VpAdapter(getSupportFragmentManager(), fragments, titles);
         vp.setAdapter(vpAdapter);
@@ -192,5 +195,6 @@ public class MainActivity extends AppCompatActivity {
         tab.getTabAt(1).setIcon(R.drawable.selector_knowledge);
         tab.getTabAt(2).setIcon(R.drawable.selector_collection);
         tab.getTabAt(3).setIcon(R.drawable.selector_project);
+        tab.getTabAt(4).setIcon(R.drawable.selector_project);
     }
 }
