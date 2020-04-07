@@ -132,6 +132,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    /**
+     * 读取视频
+     */
     private void video() {
         Cursor cursor = contentResolver.query(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, null, null, null, null);
         while (cursor.moveToNext()) {
@@ -141,6 +144,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    /**
+     * 读取音频
+     */
     private void audio() {
         Cursor cursor = contentResolver.query(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, null, null, null, null);
         while (cursor.moveToNext()) {
@@ -150,15 +156,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    private void photo() {
-        Cursor query = contentResolver.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, null, null, null, null);
-        while (query.moveToNext()) {
-            String name = query.getString(query.getColumnIndex(MediaStore.Images.ImageColumns.DISPLAY_NAME));
-            String data = query.getString(query.getColumnIndex(MediaStore.Images.ImageColumns.DATA));
-            Log.e("TAG", name + ":" + data);
+        /**
+         * 读取图片
+         */
+        private void photo() {
+            Cursor query = contentResolver.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, null, null, null, null);
+            while (query.moveToNext()) {
+                String name = query.getString(query.getColumnIndex(MediaStore.Images.ImageColumns.DISPLAY_NAME));
+                String data = query.getString(query.getColumnIndex(MediaStore.Images.ImageColumns.DATA));
+                Log.e("TAG", name + ":" + data);
+            }
         }
-    }
 
+    /**
+     * 读取短信
+     */
     private void sms() {
         Cursor cursor = contentResolver.query(Telephony.Sms.CONTENT_URI, null, null, null, null);
         while (cursor.moveToNext()) {
@@ -170,6 +182,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    /**
+     * 获取通信录
+     */
     private void getContacts() {
         final ArrayList<ContactsBean> list = new ArrayList<>();
 
@@ -200,12 +215,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         startActivity(intent);
     }
 
+    /**
+     * 更新数据
+     */
     private void updata() {
         ContentValues contentValues = new ContentValues();
         contentValues.put("name", "123");
         contentResolver.update(uri, contentValues, "name=?", new String[]{"a"});
     }
 
+    /**
+     * 查询数据
+     */
     private void query() {
         Cursor corsor = contentResolver.query(uri, null, null, null, null);
         ArrayList<String> list = new ArrayList<>();
@@ -216,10 +237,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    /**
+     * 删除数据
+     */
     private void delete() {
         contentResolver.delete(uri, "name=?", new String[]{"anfly"});
     }
 
+    /**
+     * 插入数据
+     */
     private void insert() {
         // validate
         String age = et_age.getText().toString().trim();

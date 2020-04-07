@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <Button
+            android:id="@+id/btn_raw"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="raw资源"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btn_sdcard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="sdcard资源"
+            app:layout_constraintTop_toBottomOf="@id/btn_raw" />
+
+        <Button
+            android:id="@+id/btn_net"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="net资源"
+            app:layout_constraintTop_toBottomOf="@id/btn_sdcard" />
+
+        <Button
+            android:id="@+id/btn_assets"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="assets资源"
+            app:layout_constraintTop_toBottomOf="@id/btn_net" />
+
+        <Button
+            android:id="@+id/btn_start"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="开始"
+            app:layout_constraintTop_toBottomOf="@id/btn_assets" />
+
+        <Button
+            android:id="@+id/btn_pause"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="暂停"
+            app:layout_constraintTop_toBottomOf="@id/btn_start" />
+
+        <Button
+            android:id="@+id/btn_goon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="继续"
+            app:layout_constraintTop_toBottomOf="@id/btn_pause" />
+
+        <Button
+            android:id="@+id/btn_stop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="停止"
+            app:layout_constraintTop_toBottomOf="@id/btn_goon" />
+
+        <Button
+            android:id="@+id/btn_pre"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="上一首"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/btn_next"
+            app:layout_constraintTop_toBottomOf="@id/seekbar_mp" />
+
+        <Button
+            android:id="@+id/btn_next"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="下一首"
+            app:layout_constraintLeft_toRightOf="@id/btn_pre"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/seekbar_mp" />
+
+        <SeekBar
+            android:id="@+id/seekbar_mp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/btn_stop" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_mp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/btn_next" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</ScrollView>

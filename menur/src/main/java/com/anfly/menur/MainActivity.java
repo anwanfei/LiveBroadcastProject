@@ -161,25 +161,25 @@ public class MainActivity extends AppCompatActivity {
 //    }
 //
 //    @Override
-//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-//        switch (item.getItemId()) {
+//    public boolean onOptionsItemSelected(@NonNull MenuItem item_elv) {
+//        switch (item_elv.getItemId()) {
 //            case 0:
-//                Toast.makeText(MainActivity.this, item.getTitle(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(MainActivity.this, item_elv.getTitle(), Toast.LENGTH_SHORT).show();
 //                break;
 //            case 1:
-//                Toast.makeText(MainActivity.this, item.getTitle(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(MainActivity.this, item_elv.getTitle(), Toast.LENGTH_SHORT).show();
 //                break;
 //            case 2:
-//                Toast.makeText(MainActivity.this, item.getTitle(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(MainActivity.this, item_elv.getTitle(), Toast.LENGTH_SHORT).show();
 //                break;
 //            case R.id.item_music:
-//                Toast.makeText(MainActivity.this, item.getTitle(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(MainActivity.this, item_elv.getTitle(), Toast.LENGTH_SHORT).show();
 //                break;
 //            case R.id.item_contacts:
-//                Toast.makeText(MainActivity.this, item.getTitle(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(MainActivity.this, item_elv.getTitle(), Toast.LENGTH_SHORT).show();
 //                break;
 //        }
-//        return super.onOptionsItemSelected(item);
+//        return super.onOptionsItemSelected(item_elv);
 //    }
 
     @Override
