@@ -2,16 +2,19 @@ package com.anfly.menur;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -22,6 +25,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.anfly.menur.adapter.VpMenuAdapter;
 import com.anfly.menur.fragment.HomeFragment;
 import com.anfly.menur.fragment.MutiLayoutFragment;
+import com.bumptech.glide.Glide;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 
@@ -35,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayout ll_menu;
     private ViewPager vp;
     private TabLayout tab;
+    private ImageView iv_header;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,16 +49,25 @@ public class MainActivity extends AppCompatActivity {
         initLIstener();
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Uri uri = data.getData();
+        Glide.with(this).load(uri).into(iv_header);
+    }
+
     private void initLIstener() {
         //头部监听
         View headerView = nv_menu.getHeaderView(0);
-        headerView.findViewById(R.id.iv_header).setOnClickListener(new View.OnClickListener() {
+        iv_header = headerView.findViewById(R.id.iv_header);
+        iv_header.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "点击头部", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                intent.setType("image/*");
+                startActivityForResult(intent, 100);
             }
         });
-
 
         //侧滑监听
         nv_menu.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
