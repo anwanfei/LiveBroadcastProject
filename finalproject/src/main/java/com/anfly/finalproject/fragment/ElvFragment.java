@@ -19,6 +19,7 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -40,7 +41,6 @@ public class ElvFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_elv, container, false);
         initView(view);
-        initData();
         initListener();
         return view;
     }
@@ -55,6 +55,18 @@ public class ElvFragment extends Fragment {
         });
     }
 
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser) {
+            initData();
+        } else {
+            if (list != null && list.size() > 0) {
+                list.clear();
+            }
+        }
+    }
+
     private void initData() {
         new Thread(new Runnable() {
             @Override
@@ -64,8 +76,11 @@ public class ElvFragment extends Fragment {
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        list.addAll(elvBean.getData());
-                        adadpter.notifyDataSetChanged();
+                        List<ElvBean.DataBean> data = elvBean.getData();
+                        if (data != null) {
+                            list.addAll(data);
+                            adadpter.notifyDataSetChanged();
+                        }
                     }
                 });
             }
